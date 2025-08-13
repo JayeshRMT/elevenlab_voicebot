@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import clearTripLogo from "./assests/clearTrip.png";
-import RMT from "./assests/rmt.png";
-import RadicalMinds from "./assests/radicalminds.png";
-import clearTripBackgroundUrl from "./assests/clearTripbg.jpg";
+import clearTripLogo from "../assests/yamahaLogo.png";
+import RMT from "../assests/rmt.png";
+import RadicalMinds from "../assests/radicalminds.png";
+import yamahaBackgroundUrl from "../assests/yamahaBG.jpg";
 
-const ClearTrip = () => {
+const Yamaha = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
-  const [selectedLanguage] = useState("hindi");
 
   const widgetRef = useRef(null);
 
   useEffect(() => {
-    const scriptId = "elevenlabs-convai-script5";
+    const scriptId = "elevenlabs-convai-script8";
     if (!document.getElementById(scriptId)) {
       const script = document.createElement("script");
       script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
@@ -21,7 +20,7 @@ const ClearTrip = () => {
       script.id = scriptId;
       document.body.appendChild(script);
     }
-  }, [selectedLanguage]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,16 +62,14 @@ const ClearTrip = () => {
   const containerStyle = {
     minHeight: "100vh",
     fontFamily: "Inter, sans-serif",
-    backgroundImage: `url(${clearTripBackgroundUrl})`,
+    backgroundImage: `url(${yamahaBackgroundUrl})`,
     backgroundSize: "cover",
-    // backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     overflow: "auto",
-    // transform: "rotate(180deg)",
   };
 
   const logoBackground = {
-    backgroundColor: "#ffffff", // Was white, now orange
+    backgroundColor: "#ffffff",
     padding: "10px",
     display: "flex",
     alignItems: "center",
@@ -89,22 +86,22 @@ const ClearTrip = () => {
     fontWeight: 300,
     maxWidth: "700px",
     margin: isMobile ? "-12px 5px 15px 5px" : "-12px auto 10px auto",
-    color: "#ffffff", // Was white, now orange
+    color: "#ffffff",
   };
 
   const cardStyle = {
-    background: "#FFFFFF", // Was white, now orange
+    background: "#FFFFFF",
     backdropFilter: "blur(10px)",
     WebkitBackdropFilter: "blur(10px)",
     borderRadius: "20px",
-    boxShadow: "0 20px 100px rgba(255, 255, 255, 0.3)", // Was orange, now white
+    boxShadow: "0 20px 100px rgba(255, 255, 255, 0.3)",
     border: "1px solid rgba(231, 50, 50, 0.2)",
     overflow: "hidden",
     marginTop: isMobile && "-10px",
   };
 
   const cardHeaderStyle = {
-    background: "white", // Was orange, now white
+    background: "white",
     borderRadius: "20px 20px 0 0",
     padding: "10px",
     borderBottom: "1px solid rgba(231, 50, 50, 0.2)",
@@ -113,17 +110,16 @@ const ClearTrip = () => {
   const cardTitleStyle = {
     fontSize: isMobile ? "20px" : "22px",
     fontWeight: 700,
-    color: "#ff6300", // Orange title
+    color: "#ff0000", // Changed to red
     margin: 0,
     textShadow: "0 2px 4px rgba(14, 13, 13, 0.3)",
   };
 
   const rmtSubtext = {
-    color: "#FFFFFF", // Footer text orange
+    color: "#FFFFFF",
     fontSize: "12.5px",
     textShadow: "0px 1px 3px rgba(19, 18, 18, 0.7)",
-
-    // linear-gradient(135deg, #ff6300 0%, #ff8533 100%)
+    // linear-gradient(135deg, #ff0000 0%, #ff4d4d 100%)
   };
 
   const bulletListStyle = {
@@ -156,12 +152,12 @@ const ClearTrip = () => {
     justifyContent: "center",
     flexShrink: 0,
     marginTop: "2px",
-    color: "#ff6300",
+    color: "#ff0000", // Changed to red
   });
 
   const bulletTextStyle = {
     fontSize: isMobile ? "11px" : isTablet ? "15px" : "16px",
-    color: "#ff6300", // Was dark text, now white
+    color: "#ff0000", // Changed to red
     lineHeight: "1.7",
     fontWeight: 500,
     textAlign: "left",
@@ -181,7 +177,7 @@ const ClearTrip = () => {
 
   const footerline = {
     height: "25px",
-    background: "white", // Was orange, now white
+    background: "white",
     zIndex: 9999,
     width: "100%",
     position: "fixed",
@@ -191,11 +187,11 @@ const ClearTrip = () => {
   const bulletPoints = [
     "The bot is configured for Hindi and English languages. It detects your language, understands and responds back in your language. You may also express the preferred language of communication to be Hindi or English explicitly.",
     "The bots can be configured for native and international languages; for other languages demo, kindly connect with us.",
-    "Converse with the bot regarding flight bookings, rescheduling, changes to flight bookings, pet care, add-ons, flight-related policies etc.",
+    "You can ask the bot about Yamaha bike models, specifications, pricing, and available colors.",
     "Please ensure the background noise is minimal as the bot continuously listens to voice inputs thinking it to be customer interruptions.",
-    "Repeat clearly again if the bot doesn't catch what you speak",
-    "When the bot replies to share info and while you wait, kindly acknowledge with an 'Ok'",
-    "This is for demo purpose, so call is configured to disconnect after 20 sec silence and call duration of 7 min. Kindly request if the durations are to be modified.",
+    "Repeat clearly again if the bot doesn't catch what you speak.",
+    "When the bot replies to share info and while you wait, kindly acknowledge with an 'Ok'.",
+    "You can also get assistance on service booking, warranty details, accessories, and test ride scheduling.",
     "If the chatbot doesn't load, kindly use personal internet connection than office WiFi.",
   ];
 
@@ -203,7 +199,7 @@ const ClearTrip = () => {
     <div style={containerStyle}>
       <div style={logoBackground}>
         {isMobile && <img src={RadicalMinds} alt="rmt" height={40} />}
-        <img src={clearTripLogo} alt="Akasa Logo" height={isMobile ? 40 : 50} />
+        <img src={clearTripLogo} alt="Akasa Logo" height={isMobile ? 40 : 40} />
       </div>
 
       <div
@@ -217,7 +213,7 @@ const ClearTrip = () => {
         <div style={mainWrapperStyle}>
           <h2 style={{ ...rmtSubtext, fontSize: "22px" }}>VoiceBot Demo</h2>
           <p style={subtitleStyle}>
-            We are happy to help you with your Cleartrip queries ..
+            We are happy to help you with your Yamaha queries ..
           </p>
 
           <br />
@@ -272,18 +268,10 @@ const ClearTrip = () => {
       <div style={footerline}></div>
 
       <div ref={widgetRef}>
-        <elevenlabs-convai
-          agent-id={
-            selectedLanguage === "english"
-              ? "agent_01k0r9sfzhetmvpsen2qkm325t"
-              : selectedLanguage === "hindi"
-              ? "agent_4301k1ft63x5etw81dy4g4tg8pf0"
-              : "agent_01k095bk9xem5828xjjjcbak5x"
-          }
-        />
+        <elevenlabs-convai agent-id="agent_7501k2cmkyjjfn6aqhjqmm0epzjn" />
       </div>
     </div>
   );
 };
 
-export default ClearTrip;
+export default Yamaha;

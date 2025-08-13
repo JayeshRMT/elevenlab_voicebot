@@ -1,23 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import ticketNetworkLogo from "./assests/ticketNetworkLogo.png";
-import RMT from "./assests/rmt.png";
-import RadicalMinds from "./assests/radicalminds.png";
-import ticketNetworkBackgroundUrl from "./assests/ticketnetwork.png";
+import BitkAirLogo from "../assests/batikAir.png";
+import batikAirBackgroundUrl from "../assests/batikairBg.png";
+import RMT from "../assests/rmt.png";
+import RadicalMinds from "../assests/radicalminds.png";
 
-const TicketNetwork = () => {
+const ElevenLabsConvAI = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
 
-  const widgetRef = useRef(null);
+  const widgetRef1 = useRef(null);
 
   useEffect(() => {
-    const scriptId = "elevenlabs-convai-script6";
-    if (!document.getElementById(scriptId)) {
+    const scriptId1 = "elevenlabs-convai-script1";
+
+    if (!document.getElementById(scriptId1)) {
       const script = document.createElement("script");
       script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
       script.async = true;
       script.type = "text/javascript";
-      script.id = scriptId;
+      script.id = scriptId1;
       document.body.appendChild(script);
     }
   }, []);
@@ -52,8 +53,9 @@ const TicketNetwork = () => {
       }, 150);
       return () => clearInterval(itemTimer);
     }, 300);
+
     return () => clearTimeout(timer);
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isMobile = screenSize === "mobile";
@@ -62,14 +64,14 @@ const TicketNetwork = () => {
   const containerStyle = {
     minHeight: "100vh",
     fontFamily: "Inter, sans-serif",
-    backgroundImage: `url(${ticketNetworkBackgroundUrl})`,
+    backgroundImage: `url(${batikAirBackgroundUrl})`,
     backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    overflow: "auto",
   };
 
   const logoBackground = {
-    backgroundColor: "#e6f0ff", // light blue
+    backgroundColor: "#ffffff",
     padding: "10px",
     display: "flex",
     alignItems: "center",
@@ -86,39 +88,32 @@ const TicketNetwork = () => {
     fontWeight: 300,
     maxWidth: "700px",
     margin: isMobile ? "-12px 5px 15px 5px" : "-12px auto 10px auto",
-    color: "#e6f0ff", // subtle light blue
+    color: "white",
   };
 
   const cardStyle = {
-    background: "#FFFFFF",
+    background: "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
     backdropFilter: "blur(10px)",
     WebkitBackdropFilter: "blur(10px)",
     borderRadius: "20px",
-    boxShadow: "0 20px 100px rgba(0, 123, 255, 0.2)", // blue glow
-    border: "1px solid rgba(0, 123, 255, 0.2)",
+    boxShadow: "0 20px 100px rgba(214, 51, 132, 0.3)",
+    border: "1px solid rgba(214, 51, 132, 0.2)",
     overflow: "hidden",
     marginTop: isMobile && "-10px",
   };
 
   const cardHeaderStyle = {
-    background: "#e6f0ff", // light blue
+    background: "linear-gradient(135deg, #d63384 0%, #f783ac 100%)",
     borderRadius: "20px 20px 0 0",
     padding: "10px",
-    borderBottom: "1px solid rgba(0, 123, 255, 0.2)",
   };
 
   const cardTitleStyle = {
     fontSize: isMobile ? "20px" : "22px",
     fontWeight: 700,
-    color: "#007bff", // primary blue
+    color: "white",
     margin: 0,
-    textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
-  };
-
-  const rmtSubtext = {
-    color: "#ffffff",
-    fontSize: "12.5px",
-    textShadow: "0px 1px 3px rgba(0, 0, 0, 0.7)",
+    textShadow: "0 2px 4px rgba(0,0,0,0.3)",
   };
 
   const bulletListStyle = {
@@ -134,38 +129,49 @@ const TicketNetwork = () => {
     padding: isMobile ? "2px 8px" : "10px",
     borderRadius: "16px",
     background:
-      index < visibleItems ? "rgba(255, 255, 255, 0.04)" : "transparent",
+      index < visibleItems ? "rgba(214, 51, 132, 0.05)" : "transparent",
     border:
       index < visibleItems
-        ? "1px solid rgba(0, 123, 255, 0.2)"
+        ? "1px solid rgba(214, 51, 132, 0.1)"
         : "1px solid transparent",
+
     cursor: "pointer",
     position: "relative",
   });
 
   const checkIconStyle = (index) => ({
     width: isMobile ? "20px" : "24px",
+    height: isMobile ? "20px" : "24px",
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexShrink: 0,
     marginTop: "2px",
-    color: "#007bff", // blue check icon
   });
 
   const bulletTextStyle = {
     fontSize: isMobile ? "11px" : isTablet ? "15px" : "16px",
-    color: "#007bff",
+    color: "#2c3e50",
     lineHeight: "1.7",
     fontWeight: 500,
     textAlign: "left",
     flex: 1,
   };
 
+  const footerline = {
+    height: "25px",
+    background: "linear-gradient(to right, #d63384, #f783ac)",
+    zIndex: 9999,
+    width: "100%",
+    position: "fixed",
+    bottom: 0,
+  };
+
   const rmtLogo = {
     display: isMobile ? "none" : "flex",
     margin: "20px auto",
+    // display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
@@ -174,35 +180,28 @@ const TicketNetwork = () => {
     right: isMobile ? 0 : "40%",
   };
 
-  const footerline = {
-    height: "25px",
-    background: "#e6f0ff",
-    zIndex: 9999,
-    width: "100%",
-    position: "fixed",
-    bottom: 0,
+  const rmtSubtext = {
+    color: "white",
+    fontSize: "12.5px",
+    textShadow: "0px 1px 3px rgba(0, 0, 0, 0.7)",
   };
 
   const bulletPoints = [
-    "The bot is configured for English language. It detects your language, understands and responds back in your language.",
+    "The bot is configured for Malay and English languages. It detects your language, understands and responds back in your language. You may also express the preferred language of communication to be Malay or English explicitly.",
     "The bots can be configured for native and international languages; for other languages demo, kindly connect with us.",
-    "Converse with the bot regarding sport events, concerts, theater ticket booking related queries.",
+    "Converse with the bot regarding flight bookings, rescheduling, changes to flight bookings, add-ons, flight-related policies etc.",
     "Please ensure the background noise is minimal as the bot continuously listens to voice inputs thinking it to be customer interruptions.",
     "Repeat clearly again if the bot doesn't catch what you speak",
     "When the bot replies to share info and while you wait, kindly acknowledge with an 'Ok'",
     "This is for demo purpose, so call is configured to disconnect after 20 sec silence and call duration of 7 min. Kindly request if the durations are to be modified.",
     "If the chatbot doesn't load, kindly use personal internet connection than office WiFi.",
   ];
-
   return (
     <div style={containerStyle}>
       <div style={logoBackground}>
         {isMobile && <img src={RadicalMinds} alt="rmt" height={40} />}
-        <img
-          src={ticketNetworkLogo}
-          alt="Ticket Logo"
-          height={isMobile ? 15 : 20}
-        />
+
+        <img src={BitkAirLogo} alt="Akasa Logo" height={isMobile ? 40 : 60} />
       </div>
 
       <div
@@ -216,10 +215,10 @@ const TicketNetwork = () => {
         <div style={mainWrapperStyle}>
           <h2 style={{ ...rmtSubtext, fontSize: "22px" }}>VoiceBot Demo</h2>
           <p style={subtitleStyle}>
-            We are happy to help you with your Ticketnetwork queries ..
+            We are happy to help you with your Batik Air queries ..
           </p>
-
           <br />
+
           <div style={cardStyle}>
             <div style={cardHeaderStyle}>
               <h3 style={cardTitleStyle}>Guidelines</h3>
@@ -227,7 +226,11 @@ const TicketNetwork = () => {
 
             <div style={bulletListStyle}>
               {bulletPoints.map((point, index) => (
-                <li key={index} style={bulletItemStyle(index)}>
+                <li
+                  key={index}
+                  style={bulletItemStyle(index)}
+                  className="bullet-item"
+                >
                   <div style={checkIconStyle(index)}>
                     <span className="check-mark">✓</span>
                   </div>
@@ -259,7 +262,6 @@ const TicketNetwork = () => {
           </div>
         </div>
       </div>
-
       <div style={rmtLogo}>
         <p style={rmtSubtext}>Powered by</p>
         <div style={{ display: "flex", gap: "70px" }}>
@@ -267,14 +269,12 @@ const TicketNetwork = () => {
           <img src={RadicalMinds} alt="radical" height={45} />
         </div>
       </div>
-
       <div style={footerline}></div>
-
-      <div ref={widgetRef}>
-        <elevenlabs-convai agent-id={"agent_1301k249b4qre55bp5cj9n8at377"} />
+      <div ref={widgetRef1}>
+        <elevenlabs-convai agent-id="agent_1601k0v50xwte0889hm753f6rc3k"></elevenlabs-convai>
       </div>
     </div>
   );
 };
 
-export default TicketNetwork;
+export default ElevenLabsConvAI;

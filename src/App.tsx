@@ -5,16 +5,18 @@ import {
   Navigate,
 } from "react-router-dom";
 import Aiagent1NewVersion from "./lastestVersion/aiAgent1NewVersion";
-import Aiagent1 from "./aiAgent1";
-import Batikair from "./batikair";
+import Aiagent1 from "./pages/akasaair";
+import Batikair from "./pages/batikair";
 import BatikairNew from "./lastestVersion/batikair1NewVersion";
-import ClearTrip from "./clearTrip";
-import TicketNetwork from "./ticketnetwork";
+import ClearTrip from "./pages/clearTrip";
+import TicketNetwork from "./pages/ticketnetwork";
+import Yamaha from "./pages/yamaha";
 
 function App() {
   const BASE = "/travel/airline/agent";
   const OTAROUTE = "/travel/OTA/agent";
   const ENTERMENT = "/entertainment/events/agent";
+  const AUTOMOBILE="/automobile/bike/agent"
 
   return (
     <Router>
@@ -25,6 +27,8 @@ function App() {
         />
         <Route path={`${BASE}/akasaair`} element={<Aiagent1 />} />
         <Route path={`${BASE}/batikair`} element={<Batikair />} />
+        <Route path={`${AUTOMOBILE}/yamaha`} element={<Yamaha />} />
+
         <Route path={`${OTAROUTE}/cleartrip`} element={<ClearTrip />} />
         <Route
           path={`${ENTERMENT}/ticketnetwork`}
