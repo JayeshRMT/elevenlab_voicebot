@@ -110,7 +110,7 @@ const Yamaha = () => {
   const cardTitleStyle = {
     fontSize: isMobile ? "20px" : "22px",
     fontWeight: 700,
-    color: "#ff0000", // Changed to red
+    color: "#333333", // Dark grey
     margin: 0,
     textShadow: "0 2px 4px rgba(14, 13, 13, 0.3)",
   };
@@ -119,7 +119,6 @@ const Yamaha = () => {
     color: "#FFFFFF",
     fontSize: "12.5px",
     textShadow: "0px 1px 3px rgba(19, 18, 18, 0.7)",
-    // linear-gradient(135deg, #ff0000 0%, #ff4d4d 100%)
   };
 
   const bulletListStyle = {
@@ -152,12 +151,12 @@ const Yamaha = () => {
     justifyContent: "center",
     flexShrink: 0,
     marginTop: "2px",
-    color: "#ff0000", // Changed to red
+    color: "#333333", // Dark grey
   });
 
   const bulletTextStyle = {
     fontSize: isMobile ? "11px" : isTablet ? "15px" : "16px",
-    color: "#ff0000", // Changed to red
+    color: "#333333", // Dark grey
     lineHeight: "1.7",
     fontWeight: 500,
     textAlign: "left",
