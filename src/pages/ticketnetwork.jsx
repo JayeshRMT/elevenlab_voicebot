@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import ticketNetworkLogo from "../assests/ticketNetworkLogo.png";
 import RMT from "../assests/rmt.png";
 import RadicalMinds from "../assests/radicalminds.png";
 import ticketNetworkBackgroundUrl from "../assests/ticketnetwork.png";
+import axios from "axios";
+import { useToast } from "../component/ToastContext";
 
 const TicketNetwork = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
+  const [phone, setPhone] = useState(""); // phone state
+  const showToast = useToast();
 
   const widgetRef = useRef(null);
 
@@ -21,6 +27,53 @@ const TicketNetwork = () => {
       document.body.appendChild(script);
     }
   }, []);
+
+  const [loading, setLoading] = useState(false);
+
+  const onHandleCallClick = async () => {
+    if (!phone) {
+      alert("Please enter a valid phone number.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { data } = await axios.post(
+        "https://api.elevenlabs.io/v1/convai/twilio/outbound-call",
+        {
+          agent_id: "agent_1301k249b4qre55bp5cj9n8at377",
+          agent_phone_number_id: "phnum_5801k38hqm3yf8abvfjmk79g8s82",
+          to_number: `+${phone}`,
+        },
+        {
+          headers: {
+            "xi-api-key": "sk_67931772966a105e1832bd185e210e25d337cd82cec11683", // keep key secure (env variable)
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data) {
+        if (data?.success) {
+          showToast("success", "Call successful");
+          setPhone("");
+        } else {
+          showToast(
+            "error",
+            data?.message || "Unable to call add the movement"
+          );
+          setPhone("");
+        }
+      }
+    } catch (error) {
+      showToast(
+        "error",
+        error?.response?.data?.detail?.message || "Error making call:"
+      );
+      setPhone("");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -218,6 +271,59 @@ const TicketNetwork = () => {
           <p style={subtitleStyle}>
             We are happy to help you with your Ticketnetwork queries ..
           </p>
+
+          {/* 📞 Phone Number Input with ISD Code */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: isMobile ? "-20px" : "0px",
+            }}
+          >
+            <p style={{ color: "white", marginRight: "15px" }}>
+              Phone Number :{" "}
+            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <PhoneInput
+                country={"us"}
+                value={phone}
+                onChange={(value) => setPhone(value)}
+                inputStyle={{
+                  fontSize: "15px",
+                  width: "200px",
+                  height: "40px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc",
+                  paddingLeft: "50px", // leaves space for bigger flag
+                }}
+                buttonStyle={{
+                  borderRadius: "10px 0 0 10px",
+                  borderRight: "1px solid #ccc",
+                }}
+                dropdownStyle={{
+                  textAlign: "left",
+                  backgroundColor: "#F5F5F5",
+                  color: "black",
+                }}
+              />
+              <button
+                disabled={loading}
+                style={{
+                  backgroundColor: "#007bff",
+                  border: "none",
+                  color: "#fff",
+                  padding: "10px 16px",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
+                onClick={onHandleCallClick}
+              >
+                {loading ? "Calling.." : "Call"}
+              </button>
+            </div>
+          </div>
 
           <br />
           <div style={cardStyle}>
