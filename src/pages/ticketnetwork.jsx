@@ -224,7 +224,9 @@ const TicketNetwork = () => {
     alignItems: "center",
     position: "absolute",
     bottom: 15,
-    right: isMobile ? 0 : "40%",
+    left: "50%",
+    transform: "translateX(-50%)", // centers horizontally
+    width: "max-content", // keeps it snug around content
   };
 
   const footerline = {
@@ -368,7 +370,7 @@ const TicketNetwork = () => {
 
       <div style={rmtLogo}>
         <p style={rmtSubtext}>Powered by</p>
-        <div style={{ display: "flex", gap: "70px" }}>
+        <div style={{ display: "flex", gap: "70px", flexWrap: "wrap" }}>
           <img src={RMT} alt="rmt" height={45} />
           <img src={RadicalMinds} alt="radical" height={45} />
         </div>
@@ -377,7 +379,7 @@ const TicketNetwork = () => {
       <div style={footerline}></div>
 
       <div ref={widgetRef}>
-        <elevenlabs-convai agent-id={"agent_1301k249b4qre55bp5cj9n8at377"} />
+        <elevenlabs-convai agent-id={"agent_2301k3gnm1r3fcfr6n8yz2crnw8t"} />
       </div>
     </div>
   );

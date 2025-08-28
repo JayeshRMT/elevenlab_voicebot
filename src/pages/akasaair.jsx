@@ -206,15 +206,15 @@ const ElevenLabsConvAI = () => {
   const rmtLogo = {
     display: isMobile ? "none" : "flex",
     margin: "20px auto",
-    // display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
     bottom: 15,
-    right: isMobile ? 0 : "40%",
+    left: "50%",
+    transform: "translateX(-50%)", // centers horizontally
+    width: "max-content", // keeps it snug around content
   };
-
   const footerline = {
     height: "25px",
     background: "linear-gradient(to right,rgb(184, 89, 6), #FF8C00)", // Dark orange gradient
@@ -341,7 +341,7 @@ const ElevenLabsConvAI = () => {
       </div>
       <div style={rmtLogo}>
         <p style={rmtSubtext}>Powered by</p>
-        <div style={{ display: "flex", gap: "70px" }}>
+        <div style={{ display: "flex", gap: "70px", flexWrap: "wrap" }}>
           <img src={RMT} alt="rmt" height={45} />
           <img src={RadicalMinds} alt="radical" height={45} />
         </div>

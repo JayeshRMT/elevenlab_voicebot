@@ -8,6 +8,7 @@ const ClearTrip = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
   const [selectedLanguage] = useState("hindi");
+  const [selectedOption, setSelectedOption] = useState("General queries");
 
   const widgetRef = useRef(null);
 
@@ -65,14 +66,12 @@ const ClearTrip = () => {
     fontFamily: "Inter, sans-serif",
     backgroundImage: `url(${clearTripBackgroundUrl})`,
     backgroundSize: "cover",
-    // backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     overflow: "auto",
-    // transform: "rotate(180deg)",
   };
 
   const logoBackground = {
-    backgroundColor: "#ffffff", // Was white, now orange
+    backgroundColor: "#ffffff",
     padding: "10px",
     display: "flex",
     alignItems: "center",
@@ -89,22 +88,40 @@ const ClearTrip = () => {
     fontWeight: 300,
     maxWidth: "700px",
     margin: isMobile ? "-12px 5px 15px 5px" : "-12px auto 10px auto",
-    color: "#ffffff", // Was white, now orange
+    color: "#ffffff",
+  };
+
+  const selectWrapperStyle = {
+    margin: "20px auto",
+    display: "flex",
+    justifyContent: "center",
+  };
+
+  const selectBoxStyle = {
+    padding: "10px 16px",
+    borderRadius: "12px",
+    border: "1px solid rgba(255, 255, 255, 0.5)",
+    background: "rgba(255,255,255,0.8)",
+    fontSize: "15px",
+    fontWeight: 500,
+    outline: "none",
+    cursor: "pointer",
+    boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
   };
 
   const cardStyle = {
-    background: "#FFFFFF", // Was white, now orange
+    background: "#FFFFFF",
     backdropFilter: "blur(10px)",
     WebkitBackdropFilter: "blur(10px)",
     borderRadius: "20px",
-    boxShadow: "0 20px 100px rgba(255, 255, 255, 0.3)", // Was orange, now white
+    boxShadow: "0 20px 100px rgba(255, 255, 255, 0.3)",
     border: "1px solid rgba(231, 50, 50, 0.2)",
     overflow: "hidden",
     marginTop: isMobile && "-10px",
   };
 
   const cardHeaderStyle = {
-    background: "white", // Was orange, now white
+    background: "white",
     borderRadius: "20px 20px 0 0",
     padding: "10px",
     borderBottom: "1px solid rgba(231, 50, 50, 0.2)",
@@ -113,17 +130,15 @@ const ClearTrip = () => {
   const cardTitleStyle = {
     fontSize: isMobile ? "20px" : "22px",
     fontWeight: 700,
-    color: "#ff6300", // Orange title
+    color: "#ff6300",
     margin: 0,
     textShadow: "0 2px 4px rgba(14, 13, 13, 0.3)",
   };
 
   const rmtSubtext = {
-    color: "#FFFFFF", // Footer text orange
+    color: "#FFFFFF",
     fontSize: "12.5px",
     textShadow: "0px 1px 3px rgba(19, 18, 18, 0.7)",
-
-    // linear-gradient(135deg, #ff6300 0%, #ff8533 100%)
   };
 
   const bulletListStyle = {
@@ -161,13 +176,12 @@ const ClearTrip = () => {
 
   const bulletTextStyle = {
     fontSize: isMobile ? "11px" : isTablet ? "15px" : "16px",
-    color: "#ff6300", // Was dark text, now white
+    color: "#ff6300",
     lineHeight: "1.7",
     fontWeight: 500,
     textAlign: "left",
     flex: 1,
   };
-
   const rmtLogo = {
     display: isMobile ? "none" : "flex",
     margin: "20px auto",
@@ -176,12 +190,14 @@ const ClearTrip = () => {
     alignItems: "center",
     position: "absolute",
     bottom: 15,
-    right: isMobile ? 0 : "40%",
+    left: "50%",
+    transform: "translateX(-50%)", // centers horizontally
+    width: "max-content", // keeps it snug around content
   };
 
   const footerline = {
     height: "25px",
-    background: "white", // Was orange, now white
+    background: "white",
     zIndex: 9999,
     width: "100%",
     position: "fixed",
@@ -220,7 +236,50 @@ const ClearTrip = () => {
             We are happy to help you with your Cleartrip queries ..
           </p>
 
-          <br />
+          {/* --- Select Box --- */}
+          <div style={selectWrapperStyle}>
+            <select
+              value={selectedOption}
+              onChange={(e) => setSelectedOption(e.target.value)}
+              style={{
+                ...selectBoxStyle,
+                // appearance: "none", // removes default browser arrow
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))",
+                border: "1px solid rgba(255, 99, 0, 0.4)",
+                color: "#333",
+                fontFamily: "Inter, sans-serif",
+                padding: "8px 10px",
+                borderRadius: "14px",
+                fontSize: "16px",
+                fontWeight: 500,
+                boxShadow: "0px 6px 16px rgba(0,0,0,0.08)",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+              }}
+              px
+              onFocus={(e) =>
+                (e.target.style.boxShadow =
+                  "0px 8px 20px rgba(255, 99, 0, 0.25)")
+              }
+              onBlur={(e) =>
+                (e.target.style.boxShadow = "0px 6px 16px rgba(0,0,0,0.08)")
+              }
+            >
+              <option value="General queries">General queries</option>
+              <option value="NPS/Customer Feedback">
+                NPS/Customer Feedback
+              </option>
+              <option value="Hotel Reconfirmation">Hotel Reconfirmation</option>
+              <option value="Sales Lead">Sales Lead</option>
+              <option value="Booking & Payment Reminders">
+                Booking & Payment Reminders
+              </option>
+              <option value="Customer Survey">Customer Survey</option>
+              <option value="Back Office">Back Office</option>
+            </select>
+          </div>
+
           <div style={cardStyle}>
             <div style={cardHeaderStyle}>
               <h3 style={cardTitleStyle}>Guidelines</h3>
@@ -263,7 +322,7 @@ const ClearTrip = () => {
 
       <div style={rmtLogo}>
         <p style={rmtSubtext}>Powered by</p>
-        <div style={{ display: "flex", gap: "70px" }}>
+        <div style={{ display: "flex", gap: "70px", flexWrap: "wrap" }}>
           <img src={RMT} alt="rmt" height={45} />
           <img src={RadicalMinds} alt="radical" height={45} />
         </div>
@@ -274,11 +333,13 @@ const ClearTrip = () => {
       <div ref={widgetRef}>
         <elevenlabs-convai
           agent-id={
-            selectedLanguage === "english"
-              ? "agent_01k0r9sfzhetmvpsen2qkm325t"
-              : selectedLanguage === "hindi"
+            selectedOption === "General queries"
               ? "agent_4301k1ft63x5etw81dy4g4tg8pf0"
-              : "agent_01k095bk9xem5828xjjjcbak5x"
+              : selectedOption === "NPS/Customer Feedback"
+              ? "agent_4201k3qnygq2fgqs1aw37tw59h6j"
+              : selectedOption === "Hotel Reconfirmation"
+              ? "agent_0101k3qp0y69edxapwxvsa5ksp00"
+              : "" // all others → empty string
           }
         />
       </div>
