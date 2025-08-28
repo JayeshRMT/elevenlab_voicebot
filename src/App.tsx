@@ -13,29 +13,22 @@ import TicketNetwork from "./pages/ticketnetwork";
 import Yamaha from "./pages/yamaha";
 
 function App() {
-  const BASE = "/travel/airline/agent";
-  const OTAROUTE = "/travel/OTA/agent";
-  const ENTERMENT = "/entertainment/events/agent";
-  const AUTOMOBILE = "/automobile/bike/agent";
+  // const OTAROUTE = "/travel/OTA/agent";
+  // const ENTERMENT = "/entertainment/events/agent";
+  // const AUTOMOBILE = "/automobile/bike/agent";
 
   return (
     <Router>
       <Routes>
-        <Route
-          path={`${BASE}/`}
-          element={<Navigate to={`${BASE}/akasaair`} replace />}
-        />
-        <Route path={`${BASE}/akasaair`} element={<Aiagent1 />} />
-        <Route path={`${BASE}/batikair`} element={<Batikair />} />
-        <Route path={`${AUTOMOBILE}/yamaha`} element={<Yamaha />} />
+        <Route path={`/`} element={<Navigate to={`/akasaair`} replace />} />
+        <Route path={`/akasaair`} element={<Aiagent1 />} />
+        <Route path={`/batikair`} element={<Batikair />} />
+        <Route path={`/yamaha`} element={<Yamaha />} />
 
-        <Route path={`${OTAROUTE}/cleartrip`} element={<ClearTrip />} />
-        <Route
-          path={`${ENTERMENT}/ticketnetwork`}
-          element={<TicketNetwork />}
-        />
-        <Route path={`${BASE}/akasaair-new`} element={<Aiagent1NewVersion />} />
-        <Route path={`${BASE}/batikair-new`} element={<BatikairNew />} />
+        <Route path={`/cleartrip`} element={<ClearTrip />} />
+        <Route path={`/ticketnetwork`} element={<TicketNetwork />} />
+        <Route path={`/akasaair-new`} element={<Aiagent1NewVersion />} />
+        <Route path={`/batikair-new`} element={<BatikairNew />} />
 
         <Route path="*" element={<div>No Route Exist</div>} />
       </Routes>
