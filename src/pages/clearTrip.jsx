@@ -7,7 +7,6 @@ import clearTripBackgroundUrl from "../assests/cleartripBg.jpg";
 const ClearTrip = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
-  const [selectedLanguage] = useState("hindi");
   const [selectedOption, setSelectedOption] = useState("General queries");
 
   const widgetRef = useRef(null);
@@ -22,7 +21,7 @@ const ClearTrip = () => {
       script.id = scriptId;
       document.body.appendChild(script);
     }
-  }, [selectedLanguage]);
+  }, [selectedOption]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -332,14 +331,15 @@ const ClearTrip = () => {
 
       <div ref={widgetRef}>
         <elevenlabs-convai
+          key={selectedOption} // 👈 forces re-render on change
           agent-id={
             selectedOption === "General queries"
-              ? "agent_4301k1ft63x5etw81dy4g4tg8pf0"
+              ? "agent_7601k3ngsge4ex9a3wrrqq8tyssb"
               : selectedOption === "NPS/Customer Feedback"
               ? "agent_4201k3qnygq2fgqs1aw37tw59h6j"
               : selectedOption === "Hotel Reconfirmation"
               ? "agent_0101k3qp0y69edxapwxvsa5ksp00"
-              : "" // all others → empty string
+              : ""
           }
         />
       </div>
