@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Aiagent1NewVersion from "./lastestVersion/aiAgent1NewVersion";
 import Aiagent1 from "./pages/akasaair";
 import Batikair from "./pages/batikair";
@@ -12,6 +7,7 @@ import ClearTrip from "./pages/clearTrip";
 import TicketNetwork from "./pages/ticketnetwork";
 import Yamaha from "./pages/yamaha";
 import LoginSignup from "./pages/login";
+import NotFoundPage from "./pages/notFoundPage";
 
 function App() {
   // const OTAROUTE = "/travel/OTA/agent"; // const ENTERMENT = "/entertainment/events/agent"; // const AUTOMOBILE = "/automobile/bike/agent";
@@ -30,7 +26,7 @@ function App() {
         <Route path="/batikair-new/64567" element={<BatikairNew />} />
 
         {/* Redirect all unknown routes to login */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
