@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import clearTripLogo from "../assests/clearTrip.png";
 import RMT from "../assests/rmt.png";
 import RadicalMinds from "../assests/radicalminds.png";
-import clearTripBackgroundUrl from "../assests/cleartripBg.jpg";
+import clearTripBackgroundUrl from "../assests/cleartripbg.jpg";
 
 const ClearTrip = () => {
   const [screenSize, setScreenSize] = useState("desktop");

@@ -17,6 +17,7 @@ const ToastMessage = ({
       }, duration);
       return () => clearTimeout(timer);
     }
+    // eslint-disable-next-line
   }, [autoClose, duration]);
 
   const handleClose = () => {
