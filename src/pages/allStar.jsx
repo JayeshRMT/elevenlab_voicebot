@@ -214,7 +214,7 @@ const Allstar = () => {
         <div style={mainWrapperStyle}>
           <h2 style={{ ...rmtSubtext, fontSize: "22px" }}>VoiceBot Demo</h2>
           <p style={subtitleStyle}>
-            We are happy to help you with your Yamaha queries ..
+            We are happy to help you with your Allstar queries ..
           </p>
 
           <br />
