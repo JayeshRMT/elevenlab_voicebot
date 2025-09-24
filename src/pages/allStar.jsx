@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import clearTripLogo from "../assests/clearTrip.png";
+import allStarLogo from "../assests/allstarlogo.png";
 import RMT from "../assests/rmt.png";
 import RadicalMinds from "../assests/radicalminds.png";
-import clearTripBackgroundUrl from "../assests/cleartripbg.jpg";
+import allStarBackgroundUrl from "../assests/allstarBg.jpg";
 
-const ClearTrip = () => {
+const Allstar = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
-  const [selectedOption, setSelectedOption] = useState("General queries");
 
   const widgetRef = useRef(null);
 
   useEffect(() => {
-    const scriptId = "elevenlabs-convai-script5";
+    const scriptId = "elevenlabs-convai-script8";
     if (!document.getElementById(scriptId)) {
       const script = document.createElement("script");
       script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
@@ -21,7 +20,7 @@ const ClearTrip = () => {
       script.id = scriptId;
       document.body.appendChild(script);
     }
-  }, [selectedOption]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,7 +62,7 @@ const ClearTrip = () => {
   const containerStyle = {
     minHeight: "100vh",
     fontFamily: "Inter, sans-serif",
-    backgroundImage: `url(${clearTripBackgroundUrl})`,
+    backgroundImage: `url(${allStarBackgroundUrl})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     overflow: "auto",
@@ -90,24 +89,6 @@ const ClearTrip = () => {
     color: "#ffffff",
   };
 
-  const selectWrapperStyle = {
-    margin: "20px auto",
-    display: "flex",
-    justifyContent: "center",
-  };
-
-  const selectBoxStyle = {
-    padding: "10px 16px",
-    borderRadius: "12px",
-    border: "1px solid rgba(255, 255, 255, 0.5)",
-    background: "rgba(255,255,255,0.8)",
-    fontSize: "15px",
-    fontWeight: 500,
-    outline: "none",
-    cursor: "pointer",
-    boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
-  };
-
   const cardStyle = {
     background: "#FFFFFF",
     backdropFilter: "blur(10px)",
@@ -129,7 +110,7 @@ const ClearTrip = () => {
   const cardTitleStyle = {
     fontSize: isMobile ? "20px" : "22px",
     fontWeight: 700,
-    color: "#ff6300",
+    color: "#333333", // Dark grey
     margin: 0,
     textShadow: "0 2px 4px rgba(14, 13, 13, 0.3)",
   };
@@ -170,17 +151,18 @@ const ClearTrip = () => {
     justifyContent: "center",
     flexShrink: 0,
     marginTop: "2px",
-    color: "#ff6300",
+    color: "#333333", // Dark grey
   });
 
   const bulletTextStyle = {
     fontSize: isMobile ? "11px" : isTablet ? "15px" : "16px",
-    color: "#ff6300",
+    color: "#333333", // Dark grey
     lineHeight: "1.7",
     fontWeight: 500,
     textAlign: "left",
     flex: 1,
   };
+
   const rmtLogo = {
     display: isMobile ? "none" : "flex",
     margin: "20px auto",
@@ -206,11 +188,11 @@ const ClearTrip = () => {
   const bulletPoints = [
     "The bot is configured for Hindi and English languages. It detects your language, understands and responds back in your language. You may also express the preferred language of communication to be Hindi or English explicitly.",
     "The bots can be configured for native and international languages; for other languages demo, kindly connect with us.",
-    "Converse with the bot regarding flight bookings, rescheduling, changes to flight bookings, pet care, add-ons, flight-related policies etc.",
+    "You can ask the bot about All Star’s driver education programs, class schedules, pricing, and available training locations.",
     "Please ensure the background noise is minimal as the bot continuously listens to voice inputs thinking it to be customer interruptions.",
-    "Repeat clearly again if the bot doesn't catch what you speak",
-    "When the bot replies to share info and while you wait, kindly acknowledge with an 'Ok'",
-    "This is for demo purpose, so call is configured to disconnect after 20 sec silence and call duration of 7 min. Kindly request if the durations are to be modified.",
+    "Repeat clearly again if the bot doesn't catch what you speak.",
+    "When the bot replies to share info and while you wait, kindly acknowledge with an 'Ok'.",
+    "You can also get assistance on service booking, warranty details, accessories, and test ride scheduling.",
     "If the chatbot doesn't load, kindly use personal internet connection than office WiFi.",
   ];
 
@@ -218,7 +200,7 @@ const ClearTrip = () => {
     <div style={containerStyle}>
       <div style={logoBackground}>
         {isMobile && <img src={RadicalMinds} alt="rmt" height={40} />}
-        <img src={clearTripLogo} alt="Akasa Logo" height={isMobile ? 40 : 50} />
+        <img src={allStarLogo} alt="Akasa Logo" height={isMobile ? 40 : 40} />
       </div>
 
       <div
@@ -232,53 +214,10 @@ const ClearTrip = () => {
         <div style={mainWrapperStyle}>
           <h2 style={{ ...rmtSubtext, fontSize: "22px" }}>VoiceBot Demo</h2>
           <p style={subtitleStyle}>
-            We are happy to help you with your Cleartrip queries ..
+            We are happy to help you with your Allstar queries ..
           </p>
 
-          {/* --- Select Box --- */}
-          <div style={selectWrapperStyle}>
-            <select
-              value={selectedOption}
-              onChange={(e) => setSelectedOption(e.target.value)}
-              style={{
-                ...selectBoxStyle,
-                // appearance: "none", // removes default browser arrow
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))",
-                border: "1px solid rgba(255, 99, 0, 0.4)",
-                color: "#333",
-                fontFamily: "Inter, sans-serif",
-                padding: "8px 10px",
-                borderRadius: "14px",
-                fontSize: "16px",
-                fontWeight: 500,
-                boxShadow: "0px 6px 16px rgba(0,0,0,0.08)",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-              }}
-              px
-              onFocus={(e) =>
-                (e.target.style.boxShadow =
-                  "0px 8px 20px rgba(255, 99, 0, 0.25)")
-              }
-              onBlur={(e) =>
-                (e.target.style.boxShadow = "0px 6px 16px rgba(0,0,0,0.08)")
-              }
-            >
-              <option value="General queries">General queries</option>
-              <option value="NPS/Customer Feedback">
-                NPS/Customer Feedback
-              </option>
-              <option value="Hotel Reconfirmation">Hotel Reconfirmation</option>
-              <option value="Sales Lead">Sales Lead</option>
-              <option value="Booking & Payment Reminders">
-                Booking & Payment Reminders
-              </option>
-              <option value="Customer Survey">Customer Survey</option>
-              <option value="Back Office">Back Office</option>
-            </select>
-          </div>
-
+          <br />
           <div style={cardStyle}>
             <div style={cardHeaderStyle}>
               <h3 style={cardTitleStyle}>Guidelines</h3>
@@ -318,7 +257,6 @@ const ClearTrip = () => {
           </div>
         </div>
       </div>
-
       <div style={rmtLogo}>
         <p style={rmtSubtext}>Powered by</p>
         <div style={{ display: "flex", gap: "70px", flexWrap: "wrap" }}>
@@ -330,21 +268,10 @@ const ClearTrip = () => {
       <div style={footerline}></div>
 
       <div ref={widgetRef}>
-        <elevenlabs-convai
-          key={selectedOption} // 👈 forces re-render on change
-          agent-id={
-            selectedOption === "General queries"
-              ? "agent_7601k3ngsge4ex9a3wrrqq8tyssb"
-              : selectedOption === "NPS/Customer Feedback"
-              ? "agent_4201k3qnygq2fgqs1aw37tw59h6j"
-              : selectedOption === "Hotel Reconfirmation"
-              ? "agent_0101k3qp0y69edxapwxvsa5ksp00"
-              : ""
-          }
-        />
+        <elevenlabs-convai agent-id="agent_8801k5twjf9fezt973q5td79msg8" />
       </div>
     </div>
   );
 };
 
-export default ClearTrip;
+export default Allstar;
