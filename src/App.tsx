@@ -12,6 +12,8 @@ import ClearTrip from "./pages/clearTrip";
 import TicketNetwork from "./pages/ticketnetwork";
 import Yamaha from "./pages/yamaha";
 import Allstar from "./pages/allStar";
+import TopDrivers from "./pages/topDrivers";
+import Amezon from "./pages/amezon";
 
 function App() {
   const BASE = "/travel/airline/agent";
@@ -19,6 +21,7 @@ function App() {
   const ENTERMENT = "/entertainment/events/agent";
   const AUTOMOBILE = "/automobile/bike/agent";
   const ALLSTARDRIVEREDU = "/education/driver/agent";
+  const ADVERTISING = "/advertising/shopping/agent";
 
   return (
     <Router>
@@ -33,6 +36,11 @@ function App() {
 
         <Route path={`${OTAROUTE}/cleartrip`} element={<ClearTrip />} />
         <Route path={`${ALLSTARDRIVEREDU}/allstar`} element={<Allstar />} />
+        <Route
+          path={`${ALLSTARDRIVEREDU}/topDrivers`}
+          element={<TopDrivers />}
+        />
+        <Route path={`${ADVERTISING}/amazon`} element={<Amezon />} />
 
         <Route
           path={`${ENTERMENT}/ticketnetwork`}
