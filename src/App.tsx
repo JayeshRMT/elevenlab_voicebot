@@ -9,6 +9,8 @@ import Yamaha from "./pages/yamaha";
 import LoginSignup from "./pages/login";
 import NotFoundPage from "./pages/notFoundPage";
 import Allstar from "./pages/allStar";
+import TopDrivers from "./pages/topDrivers";
+import Amezon from "./pages/amezon";
 
 function App() {
   // const OTAROUTE = "/travel/OTA/agent"; // const ENTERMENT = "/entertainment/events/agent"; // const AUTOMOBILE = "/automobile/bike/agent";
@@ -22,6 +24,8 @@ function App() {
         <Route path="/batikair/64567" element={<Batikair />} />
         <Route path="/yamaha" element={<Yamaha />} />
         <Route path="/allstar" element={<Allstar />} />
+        <Route path="/amazon" element={<Amezon />} />
+        <Route path="/topDriver" element={<TopDrivers />} />
         <Route path="/cleartrip/64567" element={<ClearTrip />} />
         <Route path="/ticketnetwork" element={<TicketNetwork />} />
         <Route path="/akasaair-new/64567" element={<Aiagent1NewVersion />} />
