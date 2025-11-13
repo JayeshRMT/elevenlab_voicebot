@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import amezonLogo from "../assests/amezonLogo.png";
 import RMT from "../assests/rmt.png";
 import RadicalMinds from "../assests/radicalminds.png";
-import amezonBG from "../assests/amezonBG.jpg";
+import amezonBG from "../assests/amazonBG.png";
 
 const Amezon = () => {
   const [screenSize, setScreenSize] = useState("desktop");
   const [visibleItems, setVisibleItems] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("Female");
 
   const widgetRef = useRef(null);
 
@@ -20,7 +21,7 @@ const Amezon = () => {
       script.id = scriptId;
       document.body.appendChild(script);
     }
-  }, []);
+  }, [selectedOption]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,6 +106,23 @@ const Amezon = () => {
     borderRadius: "20px 20px 0 0",
     padding: "10px",
     borderBottom: "1px solid rgba(231, 50, 50, 0.2)",
+  };
+  const selectWrapperStyle = {
+    margin: "20px auto",
+    display: "flex",
+    justifyContent: "center",
+  };
+
+  const selectBoxStyle = {
+    padding: "10px 16px",
+    borderRadius: "12px",
+    border: "1px solid rgba(255, 255, 255, 0.5)",
+    background: "rgba(255,255,255,0.8)",
+    fontSize: "15px",
+    fontWeight: 500,
+    outline: "none",
+    cursor: "pointer",
+    boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
   };
 
   const cardTitleStyle = {
@@ -203,7 +221,7 @@ const Amezon = () => {
         <img
           src={amezonLogo}
           alt="Akasa Logo"
-          height={isMobile ? 40 :50}
+          height={isMobile ? 40 : 50}
           // width={100}
         />
       </div>
@@ -221,8 +239,40 @@ const Amezon = () => {
           <p style={subtitleStyle}>
             We are happy to help you with your Amazon queries ..
           </p>
+          <div style={selectWrapperStyle}>
+            <select
+              value={selectedOption}
+              onChange={(e) => setSelectedOption(e.target.value)}
+              style={{
+                ...selectBoxStyle,
+                // appearance: "none", // removes default browser arrow
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85))",
+                border: "1px solid rgba(255, 99, 0, 0.4)",
+                color: "#333",
+                fontFamily: "Inter, sans-serif",
+                padding: "8px 10px",
+                borderRadius: "14px",
+                fontSize: "16px",
+                fontWeight: 500,
+                boxShadow: "0px 6px 16px rgba(0,0,0,0.08)",
+                transition: "all 0.3s ease",
+                cursor: "pointer",
+              }}
+              px
+              onFocus={(e) =>
+                (e.target.style.boxShadow =
+                  "0px 8px 20px rgba(255, 99, 0, 0.25)")
+              }
+              onBlur={(e) =>
+                (e.target.style.boxShadow = "0px 6px 16px rgba(0,0,0,0.08)")
+              }
+            >
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
 
-          <br />
           <div style={cardStyle}>
             <div style={cardHeaderStyle}>
               <h3 style={cardTitleStyle}>Guidelines</h3>
@@ -273,7 +323,16 @@ const Amezon = () => {
       <div style={footerline}></div>
 
       <div ref={widgetRef}>
-        <elevenlabs-convai agent-id="agent_6801k88f9eehf6db41ee7zjgf9ay" />
+        <elevenlabs-convai
+          key={selectedOption}
+          agent-id={
+            selectedOption === "Female"
+              ? "agent_7701k9s1z6gmfmwray57zbrmejhk"
+              : selectedOption === "Male"
+              ? "agent_6801k88f9eehf6db41ee7zjgf9ay"
+              : ""
+          }
+        />
       </div>
     </div>
   );
