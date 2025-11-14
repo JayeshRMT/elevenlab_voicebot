@@ -18,7 +18,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LoginSignup />} />
-
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/akasaair/64567" element={<Aiagent1 />} />
         <Route path="/batikair/64567" element={<Batikair />} />
